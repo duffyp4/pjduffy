@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Noise Texture Generator</title>
+</head>
+<body>
+    <h1>PJ Duffy's Home on the World Wide Web</h1>
+    <p>Right-click and save the image below as "noise.png" in your images folder</p>
+    <canvas id="noiseCanvas" width="64" height="64"></canvas>
+    
+    <script>
+        // Generate a subtle noise texture
+        const canvas = document.getElementById('noiseCanvas');
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.createImageData(64, 64);
+        const data = imageData.data;
+        
+        for (let i = 0; i < data.length; i += 4) {
+            // Create subtle gray variations
+            const noise = Math.random() * 16 - 8; // -8 to +8 variation
+            const gray = 192 + noise; // Base gray of 192 (c0c0c0)
+            
+            data[i] = gray;     // red
+            data[i + 1] = gray; // green
+            data[i + 2] = gray; // blue
+            data[i + 3] = 255;  // alpha
+        }
+        
+        ctx.putImageData(imageData, 0, 0);
+        
+        // Display the canvas larger for visibility
+        canvas.style.width = '256px';
+        canvas.style.height = '256px';
+        canvas.style.imageRendering = 'pixelated';
+        canvas.style.border = '1px solid black';
+    </script>
+</body>
+</html> 

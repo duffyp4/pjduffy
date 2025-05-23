@@ -1,48 +1,685 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+/* Classic Apple Website Aesthetic CSS */
+/* Inspired by Apple Computer Home Page circa 1996-1997 */
+
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('fonts/AppleGaramond.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em 0;
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('fonts/AppleGaramond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('fonts/AppleGaramond-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+:root {
+    --page-bg: #FFFFFF; /* White background */
+    --window-bg: #FFFFFF;
+    --window-border: #000000;
+    --titlebar-bg: #DDDDDD;
+    --titlebar-gradient-start: #FFFFFF;
+    --titlebar-gradient-end: #999999;
+    
+    --sidebar-bg: #EEEEEE;
+    --sidebar-button-bg: #6666FF; /* Classic purple-blue buttons */
+    --sidebar-button-text: #FFFFFF;
+    --sidebar-button-shadow: #333366;
+    
+    --text-color: #000000;
+    --link-color: #0000FF;
+    --link-visited: #551A8B;
+    --heading-red: #FF0000; /* Classic Apple red */
+    
+    --button-bar-bg: #CCCCCC;
+    --button-text: #000000;
+    --green-indicator: #00FF00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Apple Garamond', Georgia, serif;
+    font-size: 14px;
+    background-color: var(--page-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+#page-container {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #EFEFEF;
+    border: 3px solid #808080;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 
+        3px 3px 0 rgba(255,255,255,0.9) inset,
+        -3px -3px 0 rgba(0,0,0,0.3) inset,
+        5px 5px 10px rgba(0,0,0,0.4);
+}
+
+/* Classic Mac Window Title Bar */
+header#main-header {
+    background: #C8C8C8;
+    border-bottom: 2px solid #808080;
+    border-radius: 5px 5px 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    position: relative;
+}
+
+.logo-area {
+    position: relative;
+    background: #FFFFFF;
+    padding: 15px;
+    margin: 20px;
+    border: 3px solid #808080;
+    box-shadow: 
+        3px 3px 0 rgba(255,255,255,0.9) inset,
+        -3px -3px 0 rgba(0,0,0,0.3) inset,
+        4px 4px 10px rgba(0,0,0,0.4);
+}
+
+.logo-area img {
+    height: 110px;
+    width: auto;
+    display: block;
+}
+
+.title-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.welcome-text {
+    display: none;
+}
+
+header#main-header h1 {
+    font-family: 'Apple Garamond', Georgia, serif;
+    font-size: 32px;
+    margin: 0;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    min-height: 500px;
+    position: relative;
+}
+
+/* Sidebar with Classic Apple Buttons */
+.sidebar {
+    width: 200px;
+    background-color: #C8C8C8; /* Classic Apple gray background */
+    padding: 20px 10px 15px 10px;
+    border-right: 2px solid #808080;
+}
+
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Purple circular button style exactly like Apple's */
+.sidebar nav ul li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 35% 35%, #B8B8FF 0%, #7070FF 50%, #5050D0 100%);
+    border-radius: 50%;
+    border: 1px solid #000000;
+    box-shadow: 
+        1px 1px 2px rgba(255,255,255,0.9) inset,
+        -1px -1px 2px rgba(0,0,0,0.5) inset,
+        1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.sidebar nav ul li a {
+    display: block;
+    padding: 8px 10px 8px 35px;
+    text-decoration: none;
+    font-family: 'Apple Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #0000CC;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: all 0.1s ease;
+}
+
+.sidebar nav ul li a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+.sidebar nav ul li a:active,
+.sidebar nav ul li a.active {
+    color: #000080;
+    font-weight: bold;
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+.sidebar-section-title {
+    font-family: 'Chicago', 'Charcoal', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+.secondary-nav-container {
+    border-top: 1px solid #808080;
+    padding-top: 15px;
+}
+
+.secondary-nav ul li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 35% 35%, #B8B8FF 0%, #7070FF 50%, #5050D0 100%);
+    border-radius: 50%;
+    border: 1px solid #000000;
+    box-shadow: 
+        1px 1px 2px rgba(255,255,255,0.9) inset,
+        -1px -1px 2px rgba(0,0,0,0.5) inset,
+        1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.secondary-nav ul li a {
+    font-size: 18px;
+    padding: 8px 10px 8px 35px;
+    background: transparent;
+    color: #0000CC;
+}
+
+.secondary-nav ul li a:hover {
+    background: transparent;
+    text-decoration: underline;
+}
+
+.special-box {
+    background: var(--window-bg);
+    border: 1px solid #999999;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 
+        1px 1px 0 rgba(255,255,255,0.8) inset,
+        -1px -1px 0 rgba(0,0,0,0.25) inset;
+}
+
+.special-box img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+}
+
+.special-box a {
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    margin: 15px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 3px solid #808080;
+    box-shadow: 
+        3px 3px 0 rgba(255,255,255,0.9) inset,
+        -3px -3px 0 rgba(0,0,0,0.3) inset;
+}
+
+.page-title {
+    font-family: 'Apple Garamond', Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    color: var(--heading-red);
+    margin: 0 0 20px 0;
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
+/* Welcome Box - Classic Apple Style */
+.welcome-box {
+    background: #F0F0F0;
+    border: 2px solid #808080;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 
+        2px 2px 0 rgba(255,255,255,0.9) inset,
+        -2px -2px 0 rgba(0,0,0,0.3) inset;
 }
 
-header nav ul {
-    list-style-type: none;
+.welcome-box h2 {
+    font-size: 24px;
+    color: var(--heading-red);
+    margin: 0 0 10px 0;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: 30px;
+}
+
+.content-section h2.section-title,
+.content-section h3.section-title {
+    font-size: 20px;
+    color: var(--text-color);
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 5px;
+    margin: 0 0 15px 0;
+}
+
+/* Apple-style connection box */
+.connection-box {
+    background: #F0F0F0;
+    border: 1px solid #666666;
+    padding: 5px;
+    margin: 20px 0;
+    font-family: 'Chicago', 'Charcoal', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+/* News/Updates Items */
+.news-item {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #F8F8F8;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+.news-item img.news-thumb {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #999999;
+    margin-right: 15px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-content h3 {
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    color: var(--heading-red);
+}
+
+.news-content p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.news-content a.read-more {
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+/* Quote Boxes */
+.quote-box {
+    background: #F0F0F0;
+    border-left: 4px solid var(--heading-red);
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.quote-author {
+    text-align: right;
+    font-style: normal;
+    font-size: 14px;
+    color: #666666;
+    margin-top: 10px;
+}
+
+/* Lists */
+.styled-list {
+    list-style: none;
     padding: 0;
 }
 
-header nav ul li {
-    display: inline;
-    margin: 0 10px;
+.styled-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #F8F8F8;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
 }
 
-header nav ul li a {
-    color: #fff;
+.list-item-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--heading-red);
+}
+
+.list-item-meta {
+    font-size: 12px;
+    color: #666666;
+    margin-top: 5px;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.photo-item {
+    background: #F0F0F0;
+    border: 2px solid #808080;
+    padding: 8px;
+    box-shadow: 
+        2px 2px 0 rgba(255,255,255,0.9) inset,
+        -2px -2px 0 rgba(0,0,0,0.3) inset,
+        2px 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #666666;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.photo-item img:hover {
+    transform: scale(1.05);
+}
+
+.photo-caption {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 5px;
+    color: #666666;
+}
+
+/* Footer */
+footer#main-footer {
+    background: var(--button-bar-bg);
+    border-top: 1px solid #999999;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    color: #666666;
+}
+
+/* Button Bar (Bottom Navigation) */
+.button-bar {
+    background: var(--button-bar-bg);
+    border-top: 1px solid #666666;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-bar a {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #DDDDDD;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--button-text);
+    font-size: 12px;
+    font-family: 'Chicago', 'Charcoal', sans-serif;
+    box-shadow: 
+        1px 1px 0 rgba(255,255,255,0.8) inset,
+        -1px -1px 0 rgba(0,0,0,0.25) inset;
+}
+
+.button-bar a:hover {
+    background: #EEEEEE;
+}
+
+/* Green Status Indicator */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--green-indicator);
+    border-radius: 50%;
+    border: 1px solid #006600;
+    margin-right: 5px;
+}
+
+/* Classic elements */
+hr {
+    border: 0;
+    height: 1px;
+    background: #999999;
+    margin: 20px 0;
+}
+
+.under-construction-gif {
+    display: block;
+    margin: 20px auto;
+}
+
+.visitor-counter {
+    font-family: 'Courier', monospace;
+    font-size: 11px;
+    background: #000000;
+    color: #00FF00;
+    padding: 2px 8px;
+    display: inline-block;
+    border: 1px solid #666666;
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+a:hover {
     text-decoration: none;
 }
 
-main {
-    padding: 20px;
-    text-align: center;
+/* Responsive (minimal, keeping classic feel) */
+@media (max-width: 750px) {
+    body {
+        padding: 10px;
+    }
+    
+    #page-container {
+        width: 100%;
+    }
+    
+    header#main-header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .logo-area {
+        margin: 0 0 20px 0;
+    }
+    
+    .title-area {
+        padding: 0;
+        text-align: center;
+    }
+    
+    header#main-header h1 {
+        font-size: 24px;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #808080;
+        padding: 15px;
+    }
+    
+    main {
+        margin: 15px;
+    }
 }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
+/* Modal Styles - Classic Mac Window */
+.modal {
+    display: none;
     position: fixed;
-    bottom: 0;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #EFEFEF;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    border: 3px solid #808080;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 
+        3px 3px 0 rgba(255,255,255,0.9) inset,
+        -3px -3px 0 rgba(0,0,0,0.3) inset,
+        8px 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Classic Mac title bar */
+.modal-titlebar {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #CCCCCC 50%, #999999 100%);
+    border-bottom: 2px solid #808080;
+    border-radius: 5px 5px 0 0;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.modal-title {
+    font-family: 'Chicago', 'Charcoal', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+}
+
+.modal-close {
+    width: 20px;
+    height: 20px;
+    background: #DDDDDD;
+    border: 2px solid #808080;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        1px 1px 0 rgba(255,255,255,0.9) inset,
+        -1px -1px 0 rgba(0,0,0,0.3) inset;
+}
+
+.modal-close:hover {
+    background: #EEEEEE;
+}
+
+.modal-close:active {
+    background: #CCCCCC;
+    box-shadow: 
+        -1px -1px 0 rgba(255,255,255,0.9) inset,
+        1px 1px 0 rgba(0,0,0,0.3) inset;
+}
+
+.modal-body {
+    padding: 15px;
+    background: #FFFFFF;
+    border: 2px solid #808080;
+    margin: 15px;
+    box-shadow: 
+        2px 2px 0 rgba(0,0,0,0.3) inset,
+        -2px -2px 0 rgba(255,255,255,0.9) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: calc(85vh - 100px);
+    overflow: auto;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: calc(85vh - 120px);
+    width: auto;
+    height: auto;
+    display: block;
+    border: 1px solid #666666;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 } 

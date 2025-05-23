@@ -1,0 +1,509 @@
+/* Classic Apple Computer Homepage CSS - Circa 1996-1997 */
+/* Complete recreation with authentic textures and bevels */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Generate noise texture for that authentic grainy aluminum look */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000000;
+    margin: 0;
+    padding: 20px;
+    
+    /* Classic Mac OS gray with subtle noise texture */
+    background-color: #c0c0c0;
+    /* Use PNG noise texture if available, otherwise CSS fallback */
+    background-image: 
+        url('images/noise.png'),
+        /* Fallback noise pattern */
+        repeating-linear-gradient(
+            45deg,
+            #bebebe 0 1px,
+            #c8c8c8 1px 2px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0 1px,
+            rgba(0,0,0,0.03) 1px 2px
+        );
+    background-size: auto, 3px 3px, 3px 3px;
+}
+
+/* Main Computer Frame - The raised physical product look */
+#computer-frame {
+    width: 800px;
+    margin: 20px auto;
+    background: #d4d4d4;
+    
+    /* Deep beveled frame effect */
+    border-radius: 8px;
+    box-shadow:
+        /* Outer highlights */
+        0 0 0 1px #ffffff,
+        /* Main border */
+        0 0 0 2px #000000,
+        /* Multiple gray borders for depth */
+        0 0 0 4px #999999,
+        0 0 0 6px #888888,
+        0 0 0 8px #777777,
+        /* Deep drop shadow */
+        0 8px 16px rgba(0,0,0,0.4),
+        /* Inner bevel - the recess effect */
+        inset 2px 2px 0 #ffffff,
+        inset -2px -2px 0 #6e6e6e;
+    
+    /* Grainy aluminum texture */
+    background-image:
+        linear-gradient(135deg, 
+            #d8d8d8 0%, 
+            #d4d4d4 50%, 
+            #cccccc 100%
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 2px,
+            rgba(255,255,255,0.1) 2px,
+            rgba(255,255,255,0.1) 3px,
+            transparent 3px,
+            transparent 5px,
+            rgba(0,0,0,0.05) 5px,
+            rgba(0,0,0,0.05) 6px
+        );
+    background-size: 100% 100%, 8px 8px;
+}
+
+/* Top Section - Logo and Title Bar */
+.top-section {
+    display: flex;
+    align-items: stretch;
+    height: 80px;
+    border-bottom: 2px solid #000000;
+    background: transparent;
+}
+
+/* Logo Panel - Left side */
+.logo-panel {
+    width: 180px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #000000;
+    background: #e8e8e8;
+    position: relative;
+    
+    /* Inner bevel for recessed look */
+    box-shadow:
+        inset 2px 2px 0 #ffffff,
+        inset -2px -2px 0 #999999;
+}
+
+.logo-panel img {
+    max-height: 60px;
+    max-width: 140px;
+    width: auto;
+    height: auto;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+/* Title Bar */
+.title-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    background: #e0e0e0;
+    position: relative;
+    
+    /* Horizontal grooves effect */
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 8px,
+            #cccccc 8px,
+            #cccccc 9px,
+            #ffffff 9px,
+            #ffffff 10px,
+            #bbbbbb 10px,
+            #bbbbbb 11px,
+            transparent 11px,
+            transparent 16px
+        ),
+        linear-gradient(to bottom, 
+            #e8e8e8 0%, 
+            #e0e0e0 50%, 
+            #d8d8d8 100%
+        );
+    
+    /* Inner bevel */
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.7),
+        inset -2px -2px 0 rgba(0,0,0,0.2);
+}
+
+.title-bar h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #000000;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+}
+
+/* Main Section Container */
+.main-section {
+    display: flex;
+    min-height: 500px;
+    background: #cccccc;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: #c8c8c8;
+    padding: 20px 15px;
+    border-right: 2px solid #000000;
+    
+    /* Subtle texture */
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 2px,
+            rgba(255,255,255,0.1) 2px,
+            rgba(255,255,255,0.1) 3px
+        );
+    background-size: 5px 5px;
+}
+
+/* Navigation Lists */
+.main-nav ul,
+.secondary-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li,
+.secondary-nav li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/* The Classic Blue Orb Buttons */
+.main-nav li::before,
+.secondary-nav li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    
+    /* Complex gradient for 3D sphere effect */
+    background:
+        /* Highlight */
+        radial-gradient(ellipse at 30% 30%, 
+            rgba(255,255,255,0.8) 0%, 
+            rgba(255,255,255,0.3) 20%, 
+            transparent 40%
+        ),
+        /* Main gradient */
+        radial-gradient(ellipse at 50% 50%, 
+            #6fa3ff 0%, 
+            #4478ff 30%, 
+            #0d41b2 65%, 
+            #00256e 100%
+        );
+    
+    /* Deep shadows for 3D effect */
+    box-shadow:
+        /* Highlight */
+        inset 3px 3px 6px rgba(255,255,255,0.6),
+        /* Shadow */
+        inset -3px -3px 6px rgba(0,0,0,0.6),
+        /* Drop shadow */
+        0 3px 4px rgba(0,0,0,0.45);
+    
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+/* Active button state */
+.nav-btn.active::before {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow:
+        inset 2px 2px 4px rgba(0,0,0,0.6),
+        inset -2px -2px 4px rgba(255,255,255,0.4),
+        0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Navigation Links */
+.nav-btn {
+    display: block;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    color: #003399;
+    transition: color 0.1s ease;
+}
+
+.nav-btn:hover {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.nav-btn.active {
+    color: #000000;
+}
+
+/* Sidebar Divider */
+.sidebar-divider {
+    height: 2px;
+    background: linear-gradient(to right, 
+        #999999 0%, 
+        #ffffff 50%, 
+        #999999 100%
+    );
+    margin: 20px 0;
+}
+
+/* Resources Section */
+.resources-section h3 {
+    font-family: Geneva, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    color: #666666;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Content Box - The main display area */
+.content-box {
+    flex: 1;
+    background: #ffffff;
+    position: relative;
+    
+    /* Deep inner bevel for recessed screen effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(0,0,0,0.2),
+        inset -4px -4px 8px rgba(0,0,0,0.1);
+}
+
+.content-inner {
+    padding: 20px 25px;
+}
+
+/* Welcome Title */
+.welcome-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: #d50000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Connection Bar */
+.connection-bar {
+    background: #f0f0f0;
+    border: 1px solid #000000;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+    font-family: Geneva, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    
+    /* Subtle bevel */
+    box-shadow:
+        inset 1px 1px 0 #ffffff,
+        inset -1px -1px 0 #cccccc;
+}
+
+.connection-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 4px #00ff00;
+}
+
+/* Hero Section */
+.hero-section {
+    background: #f8f8f8;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow:
+        inset 1px 1px 0 #ffffff,
+        inset -1px -1px 0 #e0e0e0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-left h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.hero-left p {
+    font-size: 16px;
+    color: #333333;
+}
+
+/* The Yellow Badge */
+.hero-badge {
+    width: 140px;
+    height: 140px;
+    background: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    /* Starburst shape using clip-path */
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+    );
+    
+    /* 3D effect with gradients */
+    background-image:
+        radial-gradient(circle at 30% 30%, 
+            rgba(255,255,255,0.5) 0%, 
+            transparent 40%
+        ),
+        linear-gradient(135deg, 
+            #ffdd33 0%, 
+            #ffcc00 50%, 
+            #ffaa00 100%
+        );
+    
+    /* Drop shadow for depth */
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.badge-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff0000;
+    line-height: 1.2;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.badge-small {
+    font-size: 11px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: 30px;
+}
+
+.content-section h3 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #cccccc;
+    padding-bottom: 5px;
+}
+
+/* News Items */
+.news-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+}
+
+.news-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.news-content h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.news-content p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.news-content a {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+/* Section Divider */
+.section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #000000 0 8%, 
+        #ffffff 8% 92%, 
+        #000000 92% 100%
+    );
+    border: none;
+    margin: 20px 0;
+}
+
+/* Footer Text */
+.footer-text {
+    text-align: center;
+    font-style: italic;
+    color: #666666;
+}
+
+.green-indicator {
+    color: #00ff00;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* Active states and interactions */
+.nav-btn:active::before {
+    transform: translateY(-50%) translateY(2px) scale(0.95);
+}
+
+/* Ensure crisp rendering */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* For authentic retro feel */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    /* Double the texture density on retina screens */
+    body {
+        background-size: 1.5px 1.5px, 1.5px 1.5px;
+    }
+} 
